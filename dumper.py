@@ -164,7 +164,7 @@ class Dumper:
     def fix_mysql(self, file_name):
         """Fix dump file sqlite for mysql database."""
         content = self.__read(file_name)
-        content = content.replace('BEGIN TRANSACTION;', 'BEGIN;')
+        content = content.replace('BEGIN TRANSACTION;', 'START TRANSACTION;')
         content = content.replace('PRIMARY KEY', 'PRIMARY KEY AUTO_INCREMENT')
         content = content.replace(' WITHOUT ROWID;', ';')
         self.__write(file_name, content)
