@@ -62,7 +62,9 @@ class Commands:
             self.dumper.add_drop_tables(self.drawer.path_sql)
         if self.drawer.del_quotes.GetValue():
             self.dumper.del_quotes_around_table_name(self.drawer.path_sql)
-        if self.drawer.add_db.GetValue():
+        if self.drawer.use_db.GetValue():
+            self.dumper.use_database_name(self.drawer.path_sql)
+        elif self.drawer.add_db.GetValue():
             self.dumper.add_database_name(self.drawer.path_sql)
         self.message.information('Сохранение', 'Файл дампа успешно сохранен')
 

@@ -186,6 +186,15 @@ class Dumper:
             index = content.find(create_str, start_index)
         self.__write(file_name, content)
 
+    def use_database_name(self, file_name):
+        """Add use database name."""
+        content = self.__read(file_name)
+        index = content.find(';')
+        if -1 != index:
+            result = content[:index+2] + 'USE ' + self.db_name + ';\n' + content[index+2:]
+            content = result
+        self.__write(file_name, content)
+
     def add_database_name(self, file_name):
         """Add database name."""
         content = self.__read(file_name)

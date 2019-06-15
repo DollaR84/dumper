@@ -76,8 +76,10 @@ class DumperFrame(wx.Frame):
                                       'Добавить строку удаления таблицы')
         self.del_quotes = wx.CheckBox(box_fix, wx.ID_ANY,
                                       'Удалить кавычки вокруг имени таблицы')
-        self.add_db = wx.CheckBox(box_fix, wx.ID_ANY,
-                                  'Добавить имя БД перед именем таблицы')
+        self.use_db = wx.RadioButton(box_fix, wx.ID_ANY,
+                                     'Добавить использование БД', style=wx.RB_GROUP)
+        self.add_db = wx.RadioButton(box_fix, wx.ID_ANY,
+                                     'Добавить имя БД перед именем таблицы')
         box_sql_browse = wx.StaticBox(panel, wx.ID_ANY, 'Файл дампа')
         self.sql_ctrl = wx.FilePickerCtrl(box_sql_browse,
                                           wx.ID_ANY,
@@ -111,6 +113,7 @@ class DumperFrame(wx.Frame):
         fix_sizer.Add(self.mysql, 0, wx.EXPAND | wx.ALL, 5)
         fix_sizer.Add(self.drop_table, 0, wx.EXPAND | wx.ALL, 5)
         fix_sizer.Add(self.del_quotes, 0, wx.EXPAND | wx.ALL, 5)
+        fix_sizer.Add(self.use_db, 0, wx.EXPAND | wx.ALL, 5)
         fix_sizer.Add(self.add_db, 0, wx.EXPAND | wx.ALL, 5)
         sizer.Add(fix_sizer, 1, wx.EXPAND | wx.ALL)
         sql_browse_sizer = wx.StaticBoxSizer(box_sql_browse, wx.HORIZONTAL)
@@ -142,7 +145,7 @@ class DumperFrame(wx.Frame):
         self.mysql.SetValue(True)
         self.drop_table.SetValue(True)
         self.del_quotes.SetValue(True)
-        self.add_db.SetValue(True)
+        self.use_db.SetValue(True)
         self.but_add_table.Disable()
         self.but_insert.Disable()
         self.but_update.Disable()
