@@ -128,12 +128,12 @@ class Dumper:
 
     def __read(self, file_name):
         """Return content dump sql file."""
-        with open(file_name, 'r') as file_sql:
+        with open(file_name, 'r', encoding='utf-8') as file_sql:
             return file_sql.read()
 
     def __write(self, file_name, content):
         """Write file dump sql."""
-        with open(file_name, 'w') as file_sql:
+        with open(file_name, 'w', encoding='utf-8') as file_sql:
             file_sql.write(content)
 
     def fix_quote(self, text):
